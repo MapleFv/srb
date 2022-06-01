@@ -3,10 +3,7 @@ package com.atguigu.srb.core.controller.admin;
 
 import com.atguigu.srb.core.pojo.entity.IntegralGrade;
 import com.atguigu.srb.core.service.IntegralGradeService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,7 +16,7 @@ import java.util.List;
  * @author maple
  * @since 2022-05-30
  */
-@CrossOrigin
+@CrossOrigin //跨域
 @RestController
 @RequestMapping("/admin/core/integralGrade")
 public class AdminIntegralGradeController {
@@ -30,6 +27,11 @@ public class AdminIntegralGradeController {
     @GetMapping("/list")
     public List<IntegralGrade> ListAll() {
         return integralGradeService.list();
+    }
+
+    @DeleteMapping("/remove/{id}")
+    public boolean removeById(@PathVariable Long id){
+        return integralGradeService.removeById(id);
     }
 
 }
